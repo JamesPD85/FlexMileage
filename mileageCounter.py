@@ -28,7 +28,7 @@ def get_mileage_info():
 def need_gas():
 	global amountOfGas
 	global costOfGas
-	
+
 	print("Did you need to stop for gas? (y/n)")
 	stoppedForGas = input().lower()
 	if (stoppedForGas == 'y'):
@@ -71,7 +71,7 @@ def append_mileage_sheet():
 	isCorrect = input()
 	if (isCorrect == 'y' or 'Y'):
 		mileageFile = open('FlexMileageSheet.txt','a')
-		mileageFile.write('Mileage report for ' +str(date)+ ":\n\n")
+		mileageFile.write("Mileage report for " +str(date)+ ":\n\n")
 		mileageFile.write("Mileage Start: " +mileageStart+ "\n")
 		mileageFile.write("Mileage End: " +mileageEnd+ "\n")
 		mileageFile.write("Average MPG: " +averageMPG+ "\n")
