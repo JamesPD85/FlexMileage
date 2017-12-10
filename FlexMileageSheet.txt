@@ -1,0 +1,20 @@
+Mileage report for 11/13/2017:
+
+Mileage Start: 73900
+Mileage End: 73926
+Average MPG: 25
+Mileage Today: 26
+Approximate gallons of gas used: 1.04
+Amount of gas pumped: n/a gallons
+Cost of gas pumped: n/a dollar(s)
+----------------END---------------
+Mileage report for 11/21/2017:
+
+Mileage Start: 74190
+Mileage End: 74203
+Average MPG: 28
+Mileage Today: 13
+Approximate gallons of gas used: 0.4642857142857143
+Amount of gas pumped: 0 gallons
+Cost of gas pumped: 0 dollar(s)
+----------------END---------------
