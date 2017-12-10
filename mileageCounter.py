@@ -23,6 +23,12 @@ def get_mileage_info():
 	print("Enter average MPG at the end of your shift: ")
 	averageMPG = input()
 
+	need_gas()
+
+def need_gas():
+	global amountOfGas
+	global costOfGas
+	
 	print("Did you need to stop for gas? (y/n)")
 	stoppedForGas = input().lower()
 	if (stoppedForGas == 'y'):
@@ -37,10 +43,12 @@ def get_mileage_info():
 		print_mileage_info()
 	else:
 		print("Invalid selection. Try again.")
+		need_gas()
 
 def print_mileage_info():
 	global mileageToday
 	global approxGallonsUsed
+	global amountOfGas
 
 	print("")
 	print("Mileage Start: " +str(mileageStart))
