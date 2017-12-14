@@ -110,8 +110,8 @@ class Costs(tk.Frame):
         f = Figure(figsize=(5,5),dpi=100)
         a = f.add_subplot(111)
 
-        # TODO find a way for user to input mileage data to display on graph by date
-        #                             days                           milesPerGallon
+        # TODO display days of week in regular order
+        # problem: prints in alphabetical order
         daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
         a.plot(daysOfWeek,[20,25,18,23,36])
 
