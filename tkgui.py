@@ -25,10 +25,10 @@ class FlexMileageApp(tk.Tk):
 
         menubar = tk.Menu(container)
         filemenu = tk.Menu(menubar,tearoff=0)
-        filemenu.add_command(label="New", command=New, accelerator="Ctrl+N") # accelerator = hot key
-        filemenu.add_command(label="Open", command=Open, accelerator="Ctrl+O")
-        filemenu.add_command(label="Save", command=quit, accelerator="Ctrl+S")
-        filemenu.add_command(label="Save As...", command=quit, accelerator="Ctrl+Shift+S")
+        filemenu.add_command(label="New", command=None, accelerator="Ctrl+N") # accelerator = hot key
+        filemenu.add_command(label="Open", command=None, accelerator="Ctrl+O")
+        filemenu.add_command(label="Save", command=None, accelerator="Ctrl+S")
+        filemenu.add_command(label="Save As...", command=None, accelerator="Ctrl+Shift+S")
         filemenu.add_command(label="Close", command=quit, accelerator="")
 
         filemenu.add_separator()
@@ -42,7 +42,7 @@ class FlexMileageApp(tk.Tk):
         editmenu.add_command(label="Paste", command=None, accelerator="Ctrl+V")
         editmenu.add_command(label="Delete", command=None, accelerator="Delete")
         editmenu.add_command(label="Select All", command=None, accelerator="Ctrl+A")
-        menubar.add_cascade(label="Edit",menu=filemenu)
+        menubar.add_cascade(label="Edit",menu=editmenu)
 
         helpmenu = Menu(menubar,tearoff=0)
         helpmenu.add_command(label="Index", command=None)
@@ -50,7 +50,7 @@ class FlexMileageApp(tk.Tk):
         menubar.add_cascade(label="Help",menu=helpmenu)
 
         tk.Tk.config(self,menu=menubar)
-        
+
 
         self.frames = {}
 
