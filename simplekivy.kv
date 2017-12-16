@@ -1,24 +1,54 @@
-# File name: kivygui.py
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+# File name simplekivy.kv
+
+ScreenManagement:
+    transition: FadeTransition()
+    MainMenu:
+        text: "Main Menu"
+    LoginScreen:
+        text: "Login Screen"
+    QuitScreen:
+        text:"Quit"
 
 <Button>:
-    font_size: 40
     color: 0,1,0,1
-    size_hint: 0.3,0.2
+    font_size: 25
+    size_hint: 0.2,0.15
 
-<FloatLayout>:
+<MainMenu>:
+    name: "main"
     Button:
-        text:"Kivy"
-        pos_hint: {"x":0,"y":0.5}
+        on_release: app.root.current = "login"
+        text: "Login Screen"
+        pos_hint: {"left":1,"top":1}
 
     Button:
-        text:"Tutorials"
-        pos_hint:{"right":1,"top":1}
+        on_press: app.root.current = "quit"
+        text: "Quit"
+        pos_hint: {"right":1,"top":1}
 
-# <Widgets>:
-#     Button:
-#         pos: root.x, root.top - self.height
-#         text: "Kivy"
-#
-#     Button:
-#         pos: 175,0
-#         text: "Tutorials"
+<LoginScreen>:
+    name: "login"
+    FloatLayout:
+        Button:
+            on_press: app.root.current = "main"
+            text: "Main Menu"
+            pos_hint: {"left":1,"top":1}
+        Button:
+            on_press: app.root.current = "main"
+            text: "Login"
+            pos_hint:
+
+<QuitScreen>:
+    name: "quit"
+    FloatLayout:
+        Label:
+            text:"Are you sure you want to quit?"
+        Button:
+            text: "Yes"
+            pos_hint: {"left":1,"bottom":1}
+            on_press:
+        Button:
+            text: "No"
+            pos_hint: {"right":1,"bottom":1}
+            on_press: app.root.current = "main"

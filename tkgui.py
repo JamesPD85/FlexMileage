@@ -9,6 +9,7 @@ from matplotlib.figure import Figure
 
 LARGE_FONT = ("Verdana",12)
 
+
 class FlexMileageApp(tk.Tk):
 
     def __init__(self,*args,**kwargs):
@@ -21,6 +22,27 @@ class FlexMileageApp(tk.Tk):
         container.pack(side="top",fill="both",expand=True)
         container.grid_rowconfigure(0,weight=1)
         container.grid_columnconfigure(0,weight=1)
+
+        # Set up the main menubar
+        menubar = tk.Menu(container)
+
+        # Set up the file menu
+        filemenu = tk.Menu(menubar,tearoff=0)
+
+        # Now we add the menu commands such as open, save....
+        # just add them on by writing this line of code
+        filemenu.add_command(label="Quit", command=quit, accelerator="Ctrl+Q") # accelerator = hot key
+
+        # Add any additional buttons here
+
+        # filemenu.add_separator()
+
+        # Now we add the menu to the main menubar
+        menubar.add_cascade(label="File",menu=filemenu)
+
+        # Finally, add the menubar to the Tk Frame.
+        tk.Tk.config(self,menu=menubar)
+
 
         self.frames = {}
 
@@ -122,6 +144,10 @@ class Costs(tk.Frame):
         toolbar = NavigationToolbar2TkAgg(canvas,self)
         toolbar.update()
         canvas._tkcanvas.pack(side=tk.TOP,fill=tk.BOTH,expand=True)
+
+
+
+
 
 
 app = FlexMileageApp()
