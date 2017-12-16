@@ -23,26 +23,34 @@ class FlexMileageApp(tk.Tk):
         container.grid_rowconfigure(0,weight=1)
         container.grid_columnconfigure(0,weight=1)
 
-        # Set up the main menubar
         menubar = tk.Menu(container)
-
-        # Set up the file menu
         filemenu = tk.Menu(menubar,tearoff=0)
+        filemenu.add_command(label="New", command=New, accelerator="Ctrl+N") # accelerator = hot key
+        filemenu.add_command(label="Open", command=Open, accelerator="Ctrl+O")
+        filemenu.add_command(label="Save", command=quit, accelerator="Ctrl+S")
+        filemenu.add_command(label="Save As...", command=quit, accelerator="Ctrl+Shift+S")
+        filemenu.add_command(label="Close", command=quit, accelerator="")
 
-        # Now we add the menu commands such as open, save....
-        # just add them on by writing this line of code
-        filemenu.add_command(label="Quit", command=quit, accelerator="Ctrl+Q") # accelerator = hot key
-
-        # Add any additional buttons here
-
-        # filemenu.add_separator()
-
-        # Now we add the menu to the main menubar
+        filemenu.add_separator()
+        filemenu.add_command(label="Quit", command=quit, accelerator="Ctrl+Q")
         menubar.add_cascade(label="File",menu=filemenu)
 
-        # Finally, add the menubar to the Tk Frame.
-        tk.Tk.config(self,menu=menubar)
+        # Add any additional buttons here
+        editmenu = tk.Menu(menubar,tearoff=0)
+        editmenu.add_command(label="Cut", command=None, accelerator="Ctrl+X")
+        editmenu.add_command(label="Copy", command=None, accelerator="Ctrl+C")
+        editmenu.add_command(label="Paste", command=None, accelerator="Ctrl+V")
+        editmenu.add_command(label="Delete", command=None, accelerator="Delete")
+        editmenu.add_command(label="Select All", command=None, accelerator="Ctrl+A")
+        menubar.add_cascade(label="Edit",menu=filemenu)
 
+        helpmenu = Menu(menubar,tearoff=0)
+        helpmenu.add_command(label="Index", command=None)
+        helpmenu.add_command(label="About", command=None)
+        menubar.add_cascade(label="Help",menu=helpmenu)
+
+        tk.Tk.config(self,menu=menubar)
+        
 
         self.frames = {}
 
@@ -144,9 +152,6 @@ class Costs(tk.Frame):
         toolbar = NavigationToolbar2TkAgg(canvas,self)
         toolbar.update()
         canvas._tkcanvas.pack(side=tk.TOP,fill=tk.BOTH,expand=True)
-
-
-
 
 
 
