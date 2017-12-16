@@ -1,14 +1,15 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 import matplotlib
 matplotlib.use("TkAgg")
+import matplotlib.pyplot as plt
 
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2TkAgg
 from matplotlib.figure import Figure
 
 LARGE_FONT = ("Verdana",12)
-
 
 class FlexMileageApp(tk.Tk):
 
@@ -35,8 +36,9 @@ class FlexMileageApp(tk.Tk):
         filemenu.add_command(label="Quit", command=quit, accelerator="Ctrl+Q")
         menubar.add_cascade(label="File",menu=filemenu)
 
-        # Add any additional buttons here
         editmenu = tk.Menu(menubar,tearoff=0)
+        editmenu.add_command(label="Undo", command=lambda: messagebox.showinfo("MessageBox","Not supported yet!"), accelerator="Ctrl+Z")
+        editmenu.add_command(label="Redo", command=None, accelerator="Ctrl+Y")
         editmenu.add_command(label="Cut", command=None, accelerator="Ctrl+X")
         editmenu.add_command(label="Copy", command=None, accelerator="Ctrl+C")
         editmenu.add_command(label="Paste", command=None, accelerator="Ctrl+V")
@@ -50,7 +52,6 @@ class FlexMileageApp(tk.Tk):
         menubar.add_cascade(label="Help",menu=helpmenu)
 
         tk.Tk.config(self,menu=menubar)
-
 
         self.frames = {}
 
@@ -82,7 +83,7 @@ class HomePage(tk.Frame):
         button3 = ttk.Button(self,text="Login",command=lambda: controller.show_frame(LoginPage))
         button3.pack()
 
-        button4 = ttk.Button(self,text="Costs",command=lambda: controller.show_frame(Costs))
+        button4 = ttk.Button(self,text="Costs",command=lambda: Costs(Costs.show_graph(self,controller)))
         button4.pack()
 
 
@@ -137,13 +138,22 @@ class Costs(tk.Frame):
         button2 = ttk.Button(self,text="Miles per Gallon Chart",command=lambda: controller.show_frame(LoginPage))
         button2.pack()
 
+
+
+    def show_graph(self,controller):
+
+        a = {"daysOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+             "Miles": [20,25,18,23,36]}
+
+        b = a['daysOfWeek']
+        c = a['Miles']
+
+        plt.plot(c)
+        plt.xticks(range(len(c)),b)
+        plt.show()
+
         f = Figure(figsize=(5,5),dpi=100)
         a = f.add_subplot(111)
-
-        # TODO display days of week in regular order
-        # problem: prints in alphabetical order
-        daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday"]
-        a.plot(daysOfWeek,[20,25,18,23,36])
 
         canvas = FigureCanvasTkAgg(f,self)
         canvas.show()
@@ -152,6 +162,11 @@ class Costs(tk.Frame):
         toolbar = NavigationToolbar2TkAgg(canvas,self)
         toolbar.update()
         canvas._tkcanvas.pack(side=tk.TOP,fill=tk.BOTH,expand=True)
+
+
+
+
+
 
 
 
