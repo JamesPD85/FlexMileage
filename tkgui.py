@@ -5,7 +5,6 @@ from tkinter import messagebox
 import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
-
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg,NavigationToolbar2TkAgg
 from matplotlib.figure import Figure
 
@@ -83,7 +82,8 @@ class HomePage(tk.Frame):
         button3 = ttk.Button(self,text="Login",command=lambda: controller.show_frame(LoginPage))
         button3.pack()
 
-        button4 = ttk.Button(self,text="Costs",command=lambda: Costs(Costs.show_graph(self,controller)))
+        button4 = ttk.Button(self,text="Costs",command=lambda: controller.show_frame(Costs))
+        # lambda: Costs(Costs.show_graph(self,controller)))
         button4.pack()
 
 
@@ -142,8 +142,8 @@ class Costs(tk.Frame):
 
     def show_graph(self,controller):
 
-        a = {"daysOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-             "Miles": [20,25,18,23,36]}
+        a = {"daysOfWeek": ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+             "Miles": [20,25,18,23,36,19,22]}
 
         b = a['daysOfWeek']
         c = a['Miles']
@@ -152,8 +152,8 @@ class Costs(tk.Frame):
         plt.xticks(range(len(c)),b)
         plt.show()
 
-        f = Figure(figsize=(5,5),dpi=100)
-        a = f.add_subplot(111)
+        f = Figure(figsize=(10,6),dpi=100)
+        a = f.add_subplot(121)
 
         canvas = FigureCanvasTkAgg(f,self)
         canvas.show()
@@ -165,10 +165,6 @@ class Costs(tk.Frame):
 
 
 
-
-
-
-
-
 app = FlexMileageApp()
+app.geometry("1280x720")
 app.mainloop()

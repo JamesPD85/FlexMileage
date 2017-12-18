@@ -1,6 +1,7 @@
 #The purpose of this program is to record daily mileage for Amazon Flex,
 #and enter the information into a text file for tax filing.
 import sys
+from math import ceil
 
 def get_mileage_info():
 
@@ -8,8 +9,6 @@ def get_mileage_info():
 	global mileageStart
 	global mileageEnd
 	global averageMPG
-	global amountOfGas
-	global costOfGas
 
 	print("Enter today's date (mm/dd/yyyy): ")
 	date = input()
@@ -49,6 +48,7 @@ def print_mileage_info():
 	global mileageToday
 	global approxGallonsUsed
 	global amountOfGas
+	global gallonsRounded
 
 	print("")
 	print("Mileage Start: " +str(mileageStart))
@@ -59,7 +59,8 @@ def print_mileage_info():
 	print("Mileage Today: " + str(mileageToday))
 
 	approxGallonsUsed = int(mileageToday) / int(averageMPG)
-	print("Approximate gallons of gas used: " + str(approxGallonsUsed))
+	gallonsRounded = ceil(approxGallonsUsed*100) / 100
+	print("Approximate gallons of gas used: " + str(gallonsRounded))
 
 	print("Amount of gas pumped: " +str(amountOfGas)+ " gallon(s)")
 	print("Cost of gas pumped: " +str(costOfGas)+ " dollar(s)")
@@ -76,7 +77,7 @@ def append_mileage_sheet():
 		mileageFile.write("Mileage End: " +mileageEnd+ "\n")
 		mileageFile.write("Average MPG: " +averageMPG+ "\n")
 		mileageFile.write("Mileage Today: " +str(mileageToday)+ "\n")
-		mileageFile.write("Approximate gallons of gas used: " +str(approxGallonsUsed)+ "\n")
+		mileageFile.write("Approximate gallons of gas used: " +str(gallonsRounded)+ "\n")
 		mileageFile.write("Amount of gas pumped: " +str(amountOfGas)+ " gallons\n")
 		mileageFile.write("Cost of gas pumped: " +str(costOfGas)+ " dollar(s)\n")
 		mileageFile.write('---------------END---------------\n')

@@ -14,7 +14,17 @@ Mileage Start: 74190
 Mileage End: 74203
 Average MPG: 28
 Mileage Today: 13
-Approximate gallons of gas used: 0.4642857142857143
+Approximate gallons of gas used: 0.46
 Amount of gas pumped: 0 gallons
 Cost of gas pumped: 0 dollar(s)
 ----------------END---------------
+Mileage report for 1:
+
+Mileage Start: 74100
+Mileage End: 74120
+Average MPG: 22
+Mileage Today: 20
+Approximate gallons of gas used: 0.91
+Amount of gas pumped: 0 gallons
+Cost of gas pumped: 0 dollar(s)
+---------------END---------------
